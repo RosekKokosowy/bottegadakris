@@ -44,9 +44,9 @@ export function NavbarMobile() {
             {navigationItems.map((item) => (
               <div key={item.title} className="pt-5">
                 <div className="flex justify-between">
-                  <h1 className="pl-3 text-white text-xl font-normal font-poppins">
+                  <div className="pl-3 text-white text-xl font-normal font-poppins mb-[0.5em]">
                     {item.href ? <Link href={item.href} onClick={closeAll}>{item.title}</Link> : <span onClick={() => setIsSecondOpen(true)}>{item.title}</span>}
-                  </h1>
+                  </div>
                   {item.children ? <Image src={arrowRight} alt="Rozwiń" className="cursor-pointer" onClick={() => setIsSecondOpen(true)} /> : null}
                 </div>
                 <div className="bg-black h-[2px] my-2" />
@@ -61,7 +61,7 @@ export function NavbarMobile() {
             <div className="flex items-center cursor-pointer" onClick={() => setIsSecondOpen(false)}>
               <Image src={arrowLeft} alt="Wróć" className="h-auto" />
               <div className="flex items-center  pl-6">
-                <h1 className="text-white text-lg font-poppins font-normal mb-0">Warsztaty</h1>
+                <div className="text-white text-lg font-poppins font-normal mb-0">Warsztaty</div>
               </div>
             </div>
 
@@ -74,9 +74,9 @@ export function NavbarMobile() {
             {workshops.map((item) => (
               <div key={item.title} className="pt-5">
                 <div className="flex justify-between">
-                  <h1 className="pl-3 text-white text-base font-normal font-poppins">
+                  <div className="pl-3 text-white text-base font-normal font-poppins mb-[0.5em]">
                     <Link href={item.href ?? "/"} onClick={closeAll}>{item.title}</Link>
-                  </h1>
+                  </div>
                 </div>
                 <div className="bg-black h-[2px] my-2" />
               </div>
