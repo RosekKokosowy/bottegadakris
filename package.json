@@ -14,7 +14,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/aos": "^3.0.8",
     "@types/node": "^24.19.2",
-    "@types/nodemailer": "^7.0.12",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
@@ -36,12 +36,15 @@
     "mysql2": "^3.24.6",
     "next": "^16.4.6",
     "next-auth": "^4.24.15",
-    "nodemailer": "^7.0.13",
+    "nodemailer": "^10.5.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "server-only": "^0.0.1"
   },
   "engines": {
     "node": ">=20.9"
+  },
+  "overrides": {
+    "nodemailer": "$nodemailer"
   }
 }
