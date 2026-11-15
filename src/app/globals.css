@@ -1,0 +1,75 @@
+/*
+  Layer order matters: antd (rendered into @layer antd by AntdRegistry) must sit
+  below Tailwind utilities so classes like `bg-bottega-dark-brown` on antd
+  components win, exactly as they did on the old Tailwind v3 site.
+*/
+@layer theme, base, antd, components, utilities;
+
+@import "tailwindcss";
+@import "antd/dist/reset.css" layer(base);
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-bottega-brown: #ac8976;
+  --color-bottega-dark-brown: #321b05;
+  --color-bottega-beige: #f7f6f3;
+  --color-bottega-gray: #8c8c8c;
+
+  --font-playfair: var(--font-playfair-display), serif;
+  --font-lato: var(--font-lato-sans), sans-serif;
+  --font-poppins: var(--font-poppins-sans), sans-serif;
+}
+
+/*
+  Tailwind v4 changed a few v3 defaults the original site relied on:
+  gray-200 as the default border colour and a pointer cursor on buttons.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f6f2f0;
+  }
+
+  /*
+    Global rules the old site leaked from its regulations stylesheet into every page
+    (they were bundled into the main CSS). Kept so the rendered typography stays the same;
+    the antd reset imported above re-applies `body { margin: 0 }` after them.
+  */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  h2,
+  h3 {
+    color: #333;
+  }
+  h1 {
+    font-size: larger;
+  }
+  ul {
+    margin-left: 20px;
+    list-style-type: decimal;
+  }
+  .regulamin {
+    margin-bottom: 40px;
+    margin-top: 100px;
+  }
+}
+
+.ant-float-btn .ant-float-btn-body .ant-float-btn-content .ant-float-btn-icon {
+  width: 30px;
+}
