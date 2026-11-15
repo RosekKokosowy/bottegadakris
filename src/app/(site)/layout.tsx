@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { AosInit } from "@/components/Animation/AosInit";
 import { Footer } from "@/components/Footer/Footer";
 import { Navbar } from "@/components/Navbar/Navbar";
+import { BookingModal } from "@/modules/Booking/BookingModal";
+import { VoucherModal } from "@/modules/Voucher/VoucherModal";
 import { ModalProvider } from "@/providers/ModalProvider";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -13,6 +15,8 @@ export default function Layout({ children }: { children: ReactNode }) {
         <main className="min-h-[calc(100vh-255px)]">{children}</main>
         <Footer />
       </div>
+      <BookingModal />
+      <VoucherModal />
     </ModalProvider>
   );
 }
