@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  bottegadakris_mysql:
+    image: mariadb:10.11
+    container_name: siegeventure_bottegadakris
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: siegeventure_bottegadakris
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # schema + seed, run only when the volume is empty (reset: docker compose down -v)
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+
+  # catches all e-mails when MOCK_SMTP=true; inbox at http://localhost:8025
+  bottegadakris_mail:
+    image: axllent/mailpit:v1.21
+    container_name: siegeventure_bottegadakris_mail
+    restart: always
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  mysql_data:
